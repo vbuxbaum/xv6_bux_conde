@@ -44,6 +44,9 @@ int atoi(const char*);
 //tp2
 
 int date(void*);
+int forkcow(void); //change this
+
+
 
 char* virt2real(char *va);
 int num_pages(void);

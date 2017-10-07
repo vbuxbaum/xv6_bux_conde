@@ -16,6 +16,12 @@ sys_fork(void)
 }
 
 int
+sys_forkcow(void)
+{
+  return forkcow();
+}
+
+int
 sys_exit(void)
 {
   exit();
@@ -110,4 +116,10 @@ char* sys_virt2real(void)
 	argstr(0, &va);
 	return  (char*)walkpgdir(p->pgdir,va,1);
 	
+}
+
+int
+sys_num_pages(void)
+{
+  return num_pages();
 }
