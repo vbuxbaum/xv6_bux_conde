@@ -269,8 +269,9 @@ forkcow(void)
 int
 num_pages(void)
 {
-	
-  	return (myproc()->sz)/PGSIZE;
+  //panic("wololo didnt work");
+
+  return -1;
 }
 
 // Exit the current process.  Does not return.
