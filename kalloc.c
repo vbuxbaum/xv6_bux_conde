@@ -53,6 +53,16 @@ freerange(void *vstart, void *vend)
 		kfree(p);
 }
 
+void set_ref_count(struct run *r)
+{
+	//if(kmem.use_lock)
+		//acquire(&kmem.lock);
+	r->ref_count = 1;
+	//if(kmem.use_lock)
+		//release(&kmem.lock);
+	return;
+}
+
 void decrease_ref_count(struct run *r)
 {
 	//if(kmem.use_lock)
@@ -118,7 +128,7 @@ kalloc(void)
 	{
 		kmem.freelist = r->next;
 		
-		increase_ref_count(r);
+		set_ref_count(r);
 	}
 	if(kmem.use_lock)
 		release(&kmem.lock);
