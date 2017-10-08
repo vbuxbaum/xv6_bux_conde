@@ -114,12 +114,12 @@ char* sys_virt2real(void)
   	struct proc *p = myproc();
 	char* va;
 	argstr(0, &va);
-	return  (char*)walkpgdir(p->pgdir,va,1);
+	return (char*)walkpgdir(p->pgdir,va,1);
 	
 }
 
 int
 sys_num_pages(void)
 {
-  return num_pages();
+  return myproc()->sz/PGSIZE;
 }
