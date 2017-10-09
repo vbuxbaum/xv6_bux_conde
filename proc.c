@@ -235,12 +235,13 @@ forkcow(void)
   }
 
   // Copy process state from proc.
-  if((np->pgdir = copyuvm(curproc->pgdir, curproc->sz)) == 0){
+  
+  if((np->pgdir = copyuvmcow(curproc->pgdir, curproc->sz)) == 0){
     kfree(np->kstack);
     np->kstack = 0;
     np->state = UNUSED;
     return -1;
-  }
+  }//np->pgdir = curproc->pgdir; lcr3(V2P(np->pgdir));
   np->sz = curproc->sz;
   np->parent = curproc;
   *np->tf = *curproc->tf;
